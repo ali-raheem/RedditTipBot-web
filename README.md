@@ -15,6 +15,15 @@ Displays webpage to show orders.
 - MongoDB
 - Maki - images only Licensed under CC0
 
+### Running
+
+While running RTB
+
+```
+$ npm install
+$ node app.js
+```
+
 ### Databases
 
 User

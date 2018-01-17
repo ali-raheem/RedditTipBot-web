@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+  head
+    title="RedditTipBot-Website"
+    style
+      include styles.css
+    body
+      h1 Recent order list
+      table.coins
+        tr.titles
+          th From
+          th To
+          th(align="right") Start
+          th(align="right") Complete
+          th(align="right") Amount
+          th Currency
+          th Status
+        for order in orders
+          tr
+            td
+              a(href="/user/"+order.from) #{order.from}
+            td
+              a(href="/user/"+order.to) #{order.to}            
+            td(align="right")= order.startdate
+            td(align="right")= order.enddate
+            td(align="right")= order.amount
+            td= order.coin
+            td 
+              if order.status == -1
+                img(src="/img/cross.png" width=10 ali="cancelled")
+              else if order.status == 1
+                img(src="/img/heart.png" width=10 alt="complete")
+              else
+                img(src="/img/circle.png" width=10 alt="in progress")

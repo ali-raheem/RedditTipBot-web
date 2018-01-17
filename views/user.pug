@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    title="RedditTipBot-Website"
+    style
+      include styles.css
+    body
+      h1 Overview for #{user.name}
+      table.coins
+        tr.titles
+          th Coin
+          th(align = "right") Sent
+          th(align = "right") Recieved
+          th(align = "right") Balance
+        for coin in coins
+          tr
+            td= coin.name
+            td(align="right")= coin.sent
+            td(align="right")= coin.recieved
+            td(align="right")= coin.balance
+      p Join Date #{user.joindate}
+    

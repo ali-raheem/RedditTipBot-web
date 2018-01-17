@@ -2,6 +2,11 @@
 
 NodeJS/Pug webapp to monitor RedditTipBot.
 
+#### Screenshots
+
+![User Page](screenshots/user.png)
+![Orders Page](screenshots/orders.png)
+
 # Technical description
 
 Pulls orders from orderbook.

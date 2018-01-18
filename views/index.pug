@@ -1,10 +1,6 @@
-doctype html
-html(lang="en")
-  head
-    title="RedditTipBot-Website"
-    style
-      include styles.css
-  body
+extends head.pug
+
+block content
     #container.col
       p Here you can watch RTB orders as they come in.
       a(href='/orders/') Order list

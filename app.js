@@ -8,6 +8,8 @@ const dbName = 'rtb-db';
 const ordersTable = 'orders';
 const usersCol = "users";
 
+
+
 async function dbGetOrders() {
   let client;
 

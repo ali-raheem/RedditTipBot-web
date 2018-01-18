@@ -13,11 +13,12 @@ app.use(expressMongoDb('mongodb://localhost:27018/rtb-db'));
 const ordersCol = "orders";
 const usersCol = "users";
 
-app.get('/', (req, res) => {
-    res.render('index', {});
+app.get('/', async (req, res) => {
+    var orders = await req.db.collection(ordersCol).find({}).limit(5).sort({"_id": -1}).toArray();
+    res.render('index', {"orders": orders});
 });
 
-app.get('/orders', async function (req, res) {
+app.get('/orders', async (req, res) => {
     var name = req.params.name;
     var orders = await req.db.collection(ordersCol).find({}).limit(100).sort({"_id": -1}).toArray();
     res.render('orders', {'orders': orders});
@@ -30,8 +31,8 @@ app.get('/user/:name', async (req, res) => {
 	res.status(500).send("User does not exist.");
     } else {
 	var orders = req.db.collection(ordersCol);
-	var fromOrders = await orders.find({"from": name}).limit(10).toArray();
-	var toOrders = await orders.find({"to": name}).limit(10).toArray();
+	var fromOrders = await orders.find({"from": name}).limit(3).sort({"_id": -1}).toArray();
+	var toOrders = await orders.find({"to": name}).limit(3).sort({"_id": -1}).toArray();
 	res.render('user', {'user': user,
 			    'coins': user.coins,
 			    'fromOrders': fromOrders,

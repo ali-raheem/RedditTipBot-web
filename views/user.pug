@@ -14,5 +14,8 @@ block content
         td(align="right")= coin.sent
         td(align="right")= coin.recieved
         td(align="right")= coin.balance
+  h3 Recent sent
+  +orderTable(fromOrders)
+  h3 Recent recieves
+  +orderTable(toOrders)
   p Join Date #{user.joindate}
-    

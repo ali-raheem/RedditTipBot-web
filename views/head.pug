@@ -1,3 +1,31 @@
+mixin orderTable(orders)
+  table.coins
+    tr.titles
+      th From
+      th To
+      th(align="right") Start
+      th(align="right") Complete
+      th(align="right") Amount
+      th Currency
+      th Status
+    each order in orders
+      tr
+        td
+          a(href="/user/"+order.from) #{order.from}
+        td
+          a(href="/user/"+order.to) #{order.to}            
+        td(align="right")= order.startdate
+        td(align="right")= order.enddate
+        td(align="right")= order.amount
+        td= order.coin
+        td 
+          case order.status
+            when -1
+              img(src="/img/cross.png" width=10 ali="cancelled")
+            when 1
+              img(src="/img/heart.png" width=10 alt="complete")
+            when 0
+              img(src="/img/circle.png" width=10 alt="in progress")
 doctype html
 html(lang="en")
   head
@@ -6,3 +34,4 @@ html(lang="en")
       include styles.css
     body
     block content
+    
